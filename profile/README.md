@@ -1,9 +1,9 @@
 
-# blueprinted io
+# blueprinted.io
 
-## What is blueprinted io?
+## What is blueprinted.io?
 
-blueprinted io is an **AI-native, task-driven learning engine** designed to kill the box-ticking LMS and finally make proof of capability the first-class citizen in organizational learning.
+blueprinted.io is an **AI-native, task-driven learning engine** designed to kill the box-ticking LMS and finally make proof of capability the first-class citizen in organizational learning.
 
 It’s **not** a course platform. It’s not for tracking “completion.” It’s not for engagement theater or dashboards nobody reads.  
 It’s a system that transforms *real artifacts*—documentation, code, SOPs—into standardized, validated, auditable “task objects” that demand evidence, not just clicks.
@@ -15,7 +15,7 @@ It’s a system that transforms *real artifacts*—documentation, code, SOPs—i
 Because most learning systems are built for *compliance*—not for building or measuring *real skill*.  
 SMEs waste their time authoring endless, generic content; learners click through and forget it all; “proof” is a joke.
 
-**blueprinted io exists for the 10% of teams who actually want to know if someone can do the work, not just say they finished the course.**
+**blueprinted.io exists for the 10% of teams who actually want to know if someone can do the work, not just say they finished the course.**
 
 ---
 
@@ -123,7 +123,7 @@ Each “task object” is atomic, versioned, and has to be *proven*, not just co
 ## Philosophy & Invitation
 
 > “If you want dashboards and certificates, look elsewhere.  
-If you want proof, capability, and growth—welcome to blueprinted io.”
+If you want proof, capability, and growth—welcome to blueprinted.io.”
 
 ---
 
