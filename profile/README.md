@@ -26,7 +26,7 @@ SMEs waste their time authoring endless, generic content; learners click through
 ```ascii
   ┌──────────────┐      ┌────────────┐      ┌──────────────────┐      ┌────────────┐
   │   Artifacts  │      │   AI Task  │      │  Human Review    │      │ SME /      │
-  │ (Docs, Code, │ ──▶  │ Ingestion  │ ──▶  │ (Learning Spec)  │ ──▶  │ Approval   │
+  │ (Docs, Code, │ ──▶ │ Ingestion   │ ──▶ │ (Learning Spec)  │ ──▶ │ Approval   │
   │   SOPs...)   │      └────────────┘      └──────────────────┘      └────────────┘
          │                                                             │
          ▼                                                             │
@@ -134,7 +134,7 @@ You are free to use, fork, and adapt blueprinted.io for commercial and non-comme
 
 - Attribution is requested for any public or commercial use.
 - See LICENSE.md for details.
-- “blueprinted.io” and associated branding are trademarks of [Your Name/Company].
+- “blueprinted.io” and associated branding are trademarks of Ewan Matheson/blueprinted.io.
 
 We strongly encourage contributions, peer review, and adaptation—if you make it better, please open a PR!
 
