@@ -6,7 +6,7 @@
 blueprinted.io is an **AI-native, task-driven learning engine** designed to kill the box-ticking LMS and finally make proof of capability the first-class citizen in organizational learning.
 
 It’s **not** a course platform. It’s not for tracking “completion.” It’s not for engagement theater or dashboards nobody reads.  
-It’s a system that transforms *real artifacts*—documentation, code, SOPs—into standardized, validated, auditable “task objects” that demand evidence, not just clicks.
+It’s a system that transforms *real artifacts*—documentation, code, SOPs—into standardized, validated, auditable “learning objects” that demand evidence, not just clicks.
 
 ---
 
@@ -34,7 +34,7 @@ SMEs waste their time authoring endless, generic content; learners click through
   │
   ▼
 ┌─────────────┐
-│ Task Store  │  ◀─ SME-validated, versioned "task objects"
+│ Task Store  │  ◀─ SME-validated, versioned "learning objects"
 └─────────────┘
       │
       ▼
@@ -57,13 +57,13 @@ SMEs waste their time authoring endless, generic content; learners click through
 
 ---
 
-## What’s a Task Object?
+## What’s a Learning Object?
 
 Each “task object” is atomic, versioned, and has to be *proven*, not just completed.
 
 ```ascii
 ┌───────────────────────────────────────────────┐
-│                Task Object                    │
+│              Learning Object                  │
 ├───────────────────────────────────────────────┤
 │ ID: unique-task-id                            │
 │ What: ("Configure X in Product Y v2.1")       │
@@ -126,5 +126,49 @@ Each “task object” is atomic, versioned, and has to be *proven*, not just co
 If you want proof, capability, and growth—welcome to blueprinted.io.”
 
 ---
+
+## License and Open Source Ethos
+
+This project is **open source** under the [Apache 2.0 License](LICENSE.md) with a Commons Clause restricting direct SaaS resale.  
+You are free to use, fork, and adapt blueprinted.io for commercial and non-commercial purposes—just don’t turn around and sell the core as a SaaS product without permission.
+
+- Attribution is requested for any public or commercial use.
+- See LICENSE.md for details.
+- “blueprinted.io” and associated branding are trademarks of [Your Name/Company].
+
+We strongly encourage contributions, peer review, and adaptation—if you make it better, please open a PR!
+
+---
+
+## Contributing
+
+Contributions, feedback, and bug reports are welcome!  
+If you’d like to contribute, please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+*If you’re a learning specialist, SME, or have ideas on proof models, your input is especially valuable.*
+
+---
+
+---
+
+## Disclaimer
+
+blueprinted.io is an independent open source project and is not affiliated with, endorsed by, or sponsored by any of the vendors or platforms referenced in its documentation or examples.
+
+---
+
+---
+
+## What’s Next?
+
+- CLI MVP for ingesting and querying learning objects
+- SQLite-based task storage (upgradeable to Postgres)
+- Web interface for human review and SME approval
+- Automated AI ingestion pipeline for new docs
+
+For more, see [ROADMAP.md](ROADMAP.md) (coming soon).
+
+---
+
 
 *This doc will evolve as the project moves from vision to working code. Want to challenge or contribute? Reach out at ewan@blueprinted.io.*
