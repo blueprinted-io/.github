@@ -61,21 +61,64 @@ SMEs waste their time authoring endless, generic content; learners click through
 
 Each “task object” is atomic, versioned, and has to be *proven*, not just completed.
 
-```ascii
-┌───────────────────────────────────────────────┐
-│              Learning Object                  │
-├───────────────────────────────────────────────┤
-│ ID: unique-task-id                            │
-│ What: ("Configure X in Product Y v2.1")       │
-│ Why: ("Ensures secure storage...")            │
-│ How: ("Steps: 1... 2... 3...")                │
-│ Source: (Doc/page/ref)                        │
-│ SME Validator: (name, date, version)          │
-│ Evidence Required: (code, file, explanation)  │
-│ Status: (draft/approved/retired)              │
-│ Audit Trail: (every change logged)            │
-└───────────────────────────────────────────────┘
-```
+| Field         | Description                                                 | Example                                                                                                                                                           |
+|---------------|-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `task`        | Short, output-driven description of the task                | Enable BitLocker on a Windows system drive and back up the recovery key.                                                                                          |
+| `facts`       | List of factual knowledge or conditions needed              | - The drive must be formatted with NTFS<br>- TPM must be present or USB key used<br>- User must have admin rights                                                 |
+| `concept`     | The reasoning, purpose, or “why” behind the task            | BitLocker encrypts data at rest; backing up the recovery key ensures recoverability in the event of lost credentials or hardware failure.                          |
+| `procedure`   | Ordered list of actionable steps to complete the task        | 1. Open Control Panel > BitLocker Drive Encryption<br>2. Select “Turn on BitLocker” for the system drive<br>3. Choose unlock method (TPM/USB/password)<br>4. Save or print the recovery key<br>5. Complete the encryption process and verify status |
+| `system_deps` | System-level requirements                                   | - Windows 10 Pro/Enterprise<br>- TPM chip or USB<br>- Sufficient disk space                                                 |
+| `task_deps`   | List of prerequisite tasks                                  | - Verify hardware compatibility (`unconfirmed`)<br>- Ensure admin rights (`unconfirmed`)                                    |
+| `confidence`  | Confidence assessment by the AI                             | Level: high<br>Score: 0.97<br>Reason: Procedure is standard, widely documented, and output is easily verifiable.             |
+| `source`      | (Recommended) Source documentation, page, or URL            | https://learn.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview                       |
+| `id`          | (Recommended) Unique identifier for the task object         | windows-bitlocker-enable-backup                                                                                              |
+| `status`      | (Recommended) Task status                                   | draft                                                                                                                        |
+| `audit_log`   | (Recommended) Log of changes, reviewers, or SME sign-off    | - 2024-06-01: Created<br>- 2024-06-02: SME reviewed                                                                         |
+
+---
+
+## How is that information stored and worked with?
+
+Utilising json, below is an example of how the information above is kept before ingestion into a database.
+
+{
+  "task": "Enable BitLocker on a Windows system drive and back up the recovery key.",
+  "facts": [
+    "The drive must be formatted with NTFS.",
+    "A TPM chip must be present or a USB key will be required.",
+    "The user must have administrative rights."
+  ],
+  "concept": "BitLocker encrypts data at rest; backing up the recovery key ensures recoverability in the event of lost credentials or hardware failure.",
+  "procedure": [
+    "Open Control Panel > BitLocker Drive Encryption.",
+    "Select 'Turn on BitLocker' for the system drive.",
+    "Choose unlock method: TPM, USB key, or password.",
+    "Save or print the recovery key as prompted.",
+    "Complete the encryption process and verify BitLocker status."
+  ],
+  "system_deps": [
+    "Windows 10 Pro or Enterprise edition.",
+    "TPM chip or available USB port.",
+    "Sufficient disk space for encryption metadata."
+  ],
+  "task_deps": [
+    { "description": "Verify hardware compatibility", "status": "unconfirmed" },
+    { "description": "Ensure administrative privileges", "status": "unconfirmed" }
+  ],
+  "confidence": {
+    "level": "high",
+    "score": 0.97,
+    "reason": "Procedure is standard, widely documented, and output is easily verifiable."
+  },
+  "source": "https://learn.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview",
+  "id": "windows-bitlocker-enable-backup",
+  "status": "draft",
+  "audit_log": [
+    "2024-06-01: Created",
+    "2024-06-02: SME reviewed"
+  ]
+}
+
 
 ---
 
