@@ -75,6 +75,22 @@ Each “task object” is atomic, versioned, and has to be *proven*, not just co
 | `status`      | (Recommended) Task status                                   | draft                                                                                                                        |
 | `audit_log`   | (Recommended) Log of changes, reviewers, or SME sign-off    | - 2024-06-01: Created<br>- 2024-06-02: SME reviewed                                                                         |
 
+Or if you prefer, we could look at something more 'real world' - although targeted at tech, the principles apply elsewhere too.
+
+| Field         | Description                                                 | Example                                                                                                                                                       |
+|---------------|-------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `task`        | Short, output-driven description of the task                | Reset a company-issued mobile device and ensure data is wiped before offboarding an employee.                                                                 |
+| `facts`       | List of factual knowledge or conditions needed              | - Device must be returned by the employee<br>- Device PIN or password must be available<br>- Backup is required if any data must be retained                  |
+| `concept`     | The reasoning, purpose, or “why” behind the task            | Wiping the device protects company and personal data, ensures GDPR/compliance, and prepares the hardware for re-issuance or secure disposal.                  |
+| `procedure`   | Ordered list of actionable steps to complete the task        | 1. Retrieve device from employee<br>2. Verify device unlock credentials<br>3. Backup any required company data<br>4. Perform factory reset (Settings > System > Reset)<br>5. Confirm device is wiped<br>6. Update inventory records          |
+| `system_deps` | System-level requirements                                   | - Access to device management portal (if used)<br>- Administrative rights for device<br>- Inventory system access                                             |
+| `task_deps`   | List of prerequisite tasks                                  | - Collect device from departing employee (`unconfirmed`)<br>- Backup required data (`unconfirmed`)                                                            |
+| `confidence`  | Confidence assessment by the AI                             | Level: high<br>Score: 0.92<br>Reason: Common business process, all actions well-documented and auditable                                                      |
+| `source`      | (Recommended) Source documentation, page, or URL            | https://support.apple.com/en-gb/HT201274 (for iPhone)<br>https://support.google.com/android/answer/6088915 (for Android)                                      |
+| `id`          | (Recommended) Unique identifier for the task object         | offboarding-device-reset                                                                                                                                      |
+| `status`      | (Recommended) Task status                                   | draft                                                                                                                                                        |
+| `audit_log`   | (Recommended) Log of changes, reviewers, or SME sign-off    | - 2024-06-01: Created<br>- 2024-06-02: HR reviewed                                                                                                            |
+
 ---
 
 ## Core Principles
