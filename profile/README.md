@@ -1,188 +1,148 @@
-
 # blueprinted.io
 
-## What is blueprinted.io?
+## What blueprinted.io Is
 
-blueprinted.io is an **AI-native, task-driven learning engine** designed to kill the box-ticking LMS and finally make proof of capability the first-class citizen in organizational learning.
+blueprinted.io is a **governed system for defining work correctly**.
 
-It’s **not** a course platform. It’s not for tracking “completion.” It’s not for engagement theater or dashboards nobody reads.  
-It’s a system that transforms *real artifacts*—documentation, code, SOPs—into standardized, validated, auditable “learning objects” that demand evidence, not just clicks.
+It treats work as structured data, not documents, courses, or content formats.
 
----
+Instead of authoring guides, videos, and modules independently, blueprinted.io defines **Tasks** and **Workflows** as canonical records. Every learning or delivery format is derived from those records. If the task is correct, everything built from it is correct. If it is wrong, it is wrong once and can be fixed once.
 
-## Why Build This?
-
-Because most learning systems are built for *compliance*—not for building or measuring *real skill*.  
-SMEs waste their time authoring endless, generic content; learners click through and forget it all; “proof” is a joke.
-
-**blueprinted.io exists for the 10% of teams who actually want to know if someone can do the work, not just say they finished the course.**
+This is a system for **accuracy, reuse, and trust**.  
+It is not a teaching philosophy.
 
 ---
 
-## How Does It Work?
+## The Problem It Solves
 
-**The core loop is brutally simple:**
+In technical and operational environments, learning content fails for structural reasons:
 
-```ascii
-  ┌──────────────┐      ┌────────────┐      ┌──────────────────┐      ┌────────────┐
-  │   Artifacts  │      │   AI Task  │      │  Human Review    │      │ SME /      │
-  │ (Docs, Code, │ ──▶ │ Ingestion   │ ──▶ │ (Learning Spec)  │ ──▶ │ Approval   │
-  │   SOPs...)   │      └────────────┘      └──────────────────┘      └────────────┘
-         │                                                             │
-         ▼                                                             │
-  ┌────────────────────────────────────────────────────────────────────┘
-  │
-  ▼
-┌─────────────┐
-│ Task Store  │  ◀─ SME-validated, versioned "learning objects"
-└─────────────┘
-      │
-      ▼
-┌────────────────────┐
-│ Conversational AI  │  ◀─ Learner interface
-│ (no dashboards)    │
-└────────────────────┘
-      │
-      ▼
-┌───────────────┐
-│ Evidence      │ ◀─ Learner submits proof for each task (code, config, reasoning, etc.)
-│ Submission    │
-└───────────────┘
-      │
-      ▼
-┌───────────────────────────────┐
-│ Audit Trail / Validation Log  │ ◀─ SME signs off, system logs everything for proof
-└───────────────────────────────┘
-```
+- Multiple documents describe the same procedure differently  
+- “Completed training” does not translate into capability  
+- Content drifts as systems change  
+- SMEs repeatedly rewrite the same steps  
+- There is no single source of truth for how work is actually done  
+
+These are not delivery problems.  
+They are **definition problems**.
+
+blueprinted.io exists to fix the definition layer.
 
 ---
 
-## What’s a Learning Object?
+## Core Idea
 
-Each “task object” is atomic, versioned, and has to be *proven*, not just completed.
+**Define work once, correctly, as data.**  
+Everything else is derived.
 
-| Field         | Description                                                 | Example                                                                                                                                                           |
-|---------------|-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `task`        | Short, output-driven description of the task                | Enable BitLocker on a Windows system drive and back up the recovery key.                                                                                          |
-| `facts`       | List of factual knowledge or conditions needed              | - The drive must be formatted with NTFS<br>- TPM must be present or USB key used<br>- User must have admin rights                                                 |
-| `concept`     | The reasoning, purpose, or “why” behind the task            | BitLocker encrypts data at rest; backing up the recovery key ensures recoverability in the event of lost credentials or hardware failure.                          |
-| `procedure`   | Ordered list of actionable steps to complete the task        | 1. Open Control Panel > BitLocker Drive Encryption<br>2. Select “Turn on BitLocker” for the system drive<br>3. Choose unlock method (TPM/USB/password)<br>4. Save or print the recovery key<br>5. Complete the encryption process and verify status |
-| `system_deps` | System-level requirements                                   | - Windows 10 Pro/Enterprise<br>- TPM chip or USB<br>- Sufficient disk space                                                 |
-| `task_deps`   | List of prerequisite tasks                                  | - Verify hardware compatibility (`unconfirmed`)<br>- Ensure admin rights (`unconfirmed`)                                    |
-| `confidence`  | Confidence assessment by the AI                             | Level: high<br>Score: 0.97<br>Reason: Procedure is standard, widely documented, and output is easily verifiable.             |
-| `source`      | (Recommended) Source documentation, page, or URL            | https://learn.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview                       |
-| `id`          | (Recommended) Unique identifier for the task object         | windows-bitlocker-enable-backup                                                                                              |
-| `status`      | (Recommended) Task status                                   | draft                                                                                                                        |
-| `audit_log`   | (Recommended) Log of changes, reviewers, or SME sign-off    | - 2024-06-01: Created<br>- 2024-06-02: SME reviewed                                                                         |
+Task (Facts, Concepts, Procedure) → Workflow (Objective) → Delivery
 
-Or if you prefer, we could look at something more 'real world' - although targeted at tech, the principles apply elsewhere too.
-
-| Field         | Description                                                 | Example                                                                                                                                                       |
-|---------------|-------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `task`        | Short, output-driven description of the task                | Reset a company-issued mobile device and ensure data is wiped before offboarding an employee.                                                                 |
-| `facts`       | List of factual knowledge or conditions needed              | - Device must be returned by the employee<br>- Device PIN or password must be available<br>- Backup is required if any data must be retained                  |
-| `concept`     | The reasoning, purpose, or “why” behind the task            | Wiping the device protects company and personal data, ensures GDPR/compliance, and prepares the hardware for re-issuance or secure disposal.                  |
-| `procedure`   | Ordered list of actionable steps to complete the task        | 1. Retrieve device from employee<br>2. Verify device unlock credentials<br>3. Backup any required company data<br>4. Perform factory reset (Settings > System > Reset)<br>5. Confirm device is wiped<br>6. Update inventory records          |
-| `system_deps` | System-level requirements                                   | - Access to device management portal (if used)<br>- Administrative rights for device<br>- Inventory system access                                             |
-| `task_deps`   | List of prerequisite tasks                                  | - Collect device from departing employee (`unconfirmed`)<br>- Backup required data (`unconfirmed`)                                                            |
-| `confidence`  | Confidence assessment by the AI                             | Level: high<br>Score: 0.92<br>Reason: Common business process, all actions well-documented and auditable                                                      |
-| `source`      | (Recommended) Source documentation, page, or URL            | https://support.apple.com/en-gb/HT201274 (for iPhone)<br>https://support.google.com/android/answer/6088915 (for Android)                                      |
-| `id`          | (Recommended) Unique identifier for the task object         | offboarding-device-reset                                                                                                                                      |
-| `status`      | (Recommended) Task status                                   | draft                                                                                                                                                        |
-| `audit_log`   | (Recommended) Log of changes, reviewers, or SME sign-off    | - 2024-06-01: Created<br>- 2024-06-02: HR reviewed                                                                                                            |
+- **Tasks** define atomic, observable outcomes.
+- **Workflows** compose tasks to achieve organizational objectives.
+- **Delivery** (guides, labs, courses, AI tutors, SCORM, etc.) is generated from the canonical data, not authored independently.
+- **Governance** ensures definitions remain stable, auditable, and trustworthy.
 
 ---
 
-## Core Principles
+## What a Task Is
 
-- **AI-Native by Design:**  
-  AI parses artifacts, proposes tasks, and delivers learning—but only humans (learning specialists, SMEs) approve, enrich, and validate.
-- **Proof Over Completion:**  
-  No “completed” buttons—learners must *prove* each task. SME signs off, system logs it.
-- **Minimal UI:**  
-  No dashboards. The learner just asks, “What do I need to learn?” and the AI surfaces the relevant task(s).
-- **Audit Everything:**  
-  Every change, review, approval, and submission is logged—orgs can finally show *real* capability, not just course history.
-- **No Gamification, No Engagement Theater:**  
-  The only metric that matters is “can you do the task?”
+A **Task** represents one atomic unit of real work.
 
----
+A task always defines:
 
-## Out of Scope (For Now)
+- **Outcome** – what changes in the system when the task is complete  
+- **Facts** – literal information required beforehand  
+- **Concepts** – mental models required to execute correctly  
+- **Procedure** – a named sequence of atomic steps  
+- **Dependencies** – conditions that must already be true  
 
-- Best practices workflow (future add-on)
-- SCORM/xAPI delivery (legacy for ingest/audit only)
-- Dashboards, badges, leaderboards
-- Public API or plugin system (post-MVP consideration)
-- Open repo—private until the core loop is proven
+If the outcome cannot be observed or verified, it is not a valid task.
+
+Tasks are reusable. A single task may appear in many workflows.
 
 ---
 
-## Who’s It For?
+## What a Workflow Is
 
-- Teams that *must* prove skill, not just seat time
-- High-performance tech, SaaS, compliance-heavy, or risk-driven orgs
-- SMEs who are sick of being content bottlenecks
+A **Workflow** represents a composite outcome produced by executing tasks in order.
 
----
+Workflows:
 
-## Where This Might Break
+- contain **tasks only**, never procedural steps  
+- define a single, organization-owned objective  
+- reference **confirmed** task versions only  
+- do not define prerequisites or learning sequences  
 
-- “Proof” of skill is a hard, unsolved problem—feedback wanted on evidence models, SME workflow, and edge cases.
-- Scale—does the approval loop hold up in large orgs?
-- What’s missing for *your* use case? (Pull requests welcome after MVP.)
-
----
-
-## Philosophy & Invitation
-
-> “If you want dashboards and certificates, look elsewhere.  
-If you want proof, capability, and growth—welcome to blueprinted.io.”
+All executable preconditions live at the task level. This prevents duplication, contradiction, and drift.
 
 ---
 
-## License and Open Source Ethos
+## Governance Is Non-Optional
 
-This project is **open source** under the [Apache 2.0 License](LICENSE.md) with a Commons Clause restricting direct SaaS resale.  
-You are free to use, fork, and adapt blueprinted.io for commercial and non-commercial purposes—just don’t turn around and sell the core as a SaaS product without permission.
+Tasks and workflows are **authoritative records**, not informal documentation.
 
-- Attribution is requested for any public or commercial use.
-- See LICENSE.md for details.
-- “blueprinted.io” and associated branding are trademarks of Ewan Matheson/blueprinted.io.
+Because of that:
 
-We strongly encourage contributions, peer review, and adaptation—if you make it better, please open a PR!
+- all records are versioned  
+- confirmed records are immutable  
+- human review is mandatory  
+- draft or submitted tasks cannot appear in workflows  
+- every change is auditable  
 
----
-
-## Contributing
-
-Contributions, feedback, and bug reports are welcome!  
-If you’d like to contribute, please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-*If you’re a learning specialist, SME, or have ideas on proof models, your input is especially valuable.*
+This prevents silent meaning changes and ensures derived materials remain trustworthy over time.
 
 ---
 
----
+## What This System Is Not
 
-## Disclaimer
+This system is deliberately not many things.
 
-blueprinted.io is an independent open source project and is not affiliated with, endorsed by, or sponsored by any of the vendors or platforms referenced in its documentation or examples.
+It is not:
 
----
+- a course platform  
+- a learning experience design framework  
+- a mastery or expertise engine  
+- a troubleshooting or diagnostics system  
+- a break-and-fix environment  
 
----
+This system defines **safe, repeatable, correct execution**.  
+It establishes what “good” looks like and makes that definition stable.
 
-## What’s Next?
-
-- CLI MVP for ingesting and querying learning objects
-- SQLite-based task storage (upgradeable to Postgres)
-- Web interface for human review and SME approval
-- Automated AI ingestion pipeline for new docs
-
-For more, see [ROADMAP.md](ROADMAP.md) (coming soon).
+Everything else belongs in the domain of **experience**.
 
 ---
 
+## Role of AI
 
-*This doc will evolve as the project moves from vision to working code. Want to challenge or contribute? Reach out at ewan@blueprinted.io.*
+AI is used where it is structurally appropriate:
+
+- parsing artifacts into proposed tasks  
+- assisting with validation and consistency checks  
+- surfacing relevant tasks conversationally  
+- flagging potential drift when upstream systems change  
+
+AI does **not** replace human judgment.
+
+---
+
+## Who This Is For
+
+This system is for people responsible for real outcomes:
+
+- engineers and architects  
+- subject-matter experts who own procedures  
+- learning teams who need content that does not drift  
+- organizations that care whether people can actually do the work  
+
+---
+
+## In Short
+
+- Work is defined once, correctly.  
+- Tasks are the atomic unit.  
+- Workflows compose tasks into outcomes.  
+- Delivery is derived, not authored.  
+- Human review is mandatory.  
+- Drift is treated as a structural failure.  
+
+That is the entire point.
