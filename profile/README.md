@@ -12,8 +12,8 @@ The result is a platform where Tasks and Workflows are first-class governed reco
 
 | Repo | Description | Status |
 |------|-------------|--------|
-| [`core`](https://github.com/blueprinted-io/core) | Original MVP — FastAPI + SQLite, fully runnable locally | Complete |
-| [`platform`](https://github.com/blueprinted-io/platform) | Production backend — PostgreSQL, async API, Authentik OIDC | Active development |
+| [`core`](https://github.com/blueprinted-io/core) | Original MVP: FastAPI + SQLite, fully runnable locally | Complete |
+| [`platform`](https://github.com/blueprinted-io/platform) | Production backend: PostgreSQL, async API, Authentik OIDC | Active development |
 | [`app`](https://github.com/blueprinted-io/app) | React frontend | Active development |
 
 **Start with `core`** if you want to understand the data model and governance lifecycle. It runs in under five minutes and has a seeded demo dataset.
