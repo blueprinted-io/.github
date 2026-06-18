@@ -2,7 +2,7 @@
 
 **Structured knowledge governance for technical operations.**
 
-Most operational knowledge lives in documents, wikis, and tribal memory. It drifts, contradicts itself, and rots the moment reality changes. Blueprinted is built on a different premise: knowledge should be governed the same way software is — versioned, reviewed, composable, and auditable.
+Most operational knowledge lives in documents, wikis, and tribal memory. It drifts, contradicts itself, and rots the moment reality changes. Blueprinted is built on a different premise: knowledge should be governed the same way software is: versioned, reviewed, composable, and auditable.
 
 The result is a platform where Tasks and Workflows are first-class governed records, not documents. Human reviewers approve changes before they land. AI agents and human workers consume the same data through the same API, with the same access rules.
 
